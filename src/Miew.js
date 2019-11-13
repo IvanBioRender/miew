@@ -1907,6 +1907,11 @@ Miew.prototype.load = function (source, opts) {
     context: this,
   });
 
+  let colorer;
+  if (this.rep()) {
+    colorer = this.rep().colorer;
+  }
+
   // for a single-file scenario
   if (!this.settings.now.use.multiFile) {
     // abort all loaders in progress
@@ -1949,6 +1954,9 @@ Miew.prototype.load = function (source, opts) {
     .then((data) => _parseData(data, opts, job))
     .then((object) => {
       const name = this._onLoad(object, opts);
+      if (this.rep() && colorer) {
+        this.rep({ colorer });
+      }
       return onLoadEnd(name);
     })
     .catch((err) => {
