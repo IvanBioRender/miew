@@ -4105,6 +4105,10 @@ Miew.prototype.getPalettes = function () {
   return palettes;
 };
 
+Miew.prototype.getMaterials = function () {
+  return materials;
+};
+
 Miew.prototype.VERSION = (typeof PACKAGE_VERSION !== 'undefined' && PACKAGE_VERSION) || '0.0.0-dev';
 
 // Uncomment this to get debug trace:
