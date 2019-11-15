@@ -1907,9 +1907,9 @@ Miew.prototype.load = function (source, opts) {
     context: this,
   });
 
-  let colorer;
+  let __rep;
   if (this.rep()) {
-    colorer = this.rep().colorer;
+    __rep = this.rep();
   }
 
   // for a single-file scenario
@@ -1954,8 +1954,8 @@ Miew.prototype.load = function (source, opts) {
     .then((data) => _parseData(data, opts, job))
     .then((object) => {
       const name = this._onLoad(object, opts);
-      if (this.rep() && colorer) {
-        this.rep({ colorer });
+      if (this.rep() && __rep) {
+        this.rep(__rep);
       }
       return onLoadEnd(name);
     })
